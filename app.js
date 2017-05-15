@@ -59,7 +59,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //process address registration
 var sess;
 app.post('/addaddress',function(req,res){
-sess=req.session;	
+sess=req.session; 
 var name=req.body.name;
 var mobile=req.body.mobile;
 var email=req.body.email;
@@ -177,7 +177,7 @@ country_id:country_id
 };
 //insert record if email and mobile donot exists
 
-var query = connection.query('UPDATE  user SET ? WHERE email = ?', [address,email], function(err, result) {
+var query = connection.query('UPDATE  user SET ? WHERE email = ?', {address,email}, function(err, result) {
 
 
 if(!!err)

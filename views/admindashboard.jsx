@@ -1,27 +1,12 @@
+var React=require('react');
+var DefaultLayout=require('./layout/adminmaster');
 
-<html>
-<head>
+ 
+ var AdmindashboardComponent =React.createClass({
+   
+componentDidMount() {
 
-<link rel="stylesheet" href="http://bootswatch.com/lumen/bootstrap.min.css" />
-  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
-   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="code.jquery.com/jquery-1.12.4.js"></script>
- <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-
-<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
-
-<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
 $(document).ready(function() {
     $('#example').DataTable( {
         dom: 'Bfrtip',
@@ -31,10 +16,13 @@ $(document).ready(function() {
     } )
 } );
 </script>
-</head>
 
-<body>
-<table id="example" class="display" cellspacing="0" width="100%">
+  },
+    render: function(){
+        return(
+        <div>
+   <DefaultLayout name={this.props.name}>
+    <table id="example" className="display nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -514,5 +502,10 @@ $(document).ready(function() {
             </tr>
         </tbody>
     </table>
-</body>
-</html>
+    </DefaultLayout>
+  </div>
+        )
+    }
+});
+
+module.exports=AdmindashboardComponent;

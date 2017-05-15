@@ -15,7 +15,7 @@ if(sess.email)
 res.render('profile',{name:"Profile"});
 }else
 {
-		res.render('login',{name:"Login"});
+res.render('login',{name:"Login"});
 
 }
    

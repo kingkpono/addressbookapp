@@ -27,7 +27,6 @@ var AdminmasterLayout=React.createClass({
 <script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
   
 
-
  <title>{this.props.name}</title>
 </head>
 <body>

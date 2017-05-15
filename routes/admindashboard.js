@@ -3,7 +3,7 @@ var mysql=require('mysql');
 var app=express();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var path    = require("path");
+
 app.use(session({secret: 'ssshhhhh'}));
 
 var connection=mysql.createConnection({
@@ -34,8 +34,7 @@ if(sess.email){
 
 if(result.length>0)
 {
-	  res.sendFile(path.join(__dirname + '/admindashboard.html'));
-/*res.render('admindashboard.html,
+res.render('admindashboard',
 	{
 
 		name:"Admin Admindashboard",
@@ -51,7 +50,7 @@ country_id:result[0].country_id
    }
 
 	);
-*/
+
 }else{
      res.send("<h1>No data<h1>");
 }//end else if no email or mobile
