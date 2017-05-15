@@ -1,0 +1,29 @@
+{
+  "name": "addressbookapp",
+  "version": "1.0.0",
+  "description": "manage addresses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kpono Akpabio",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "cors-prefetch-middleware": "^1.0.0",
+    "express": "^4.15.2",
+    "express-react-views": "^0.10.2",
+    "express-session": "^1.15.2",
+    "faker": "^4.1.0",
+    "formidable": "^1.1.1",
+    "images-upload-middleware": "^1.1.1",
+    "mysql": "^2.13.0",
+    "react": "^15.5.4",
+    "react-bootstrap-table": "^3.3.4",
+    "react-data-grid": "^2.0.41",
+    "react-dom": "^15.5.4",
+    "react-dropzone": "^3.13.1",
+    "react-images-uploader": "^1.0.1"
+  }
+}
