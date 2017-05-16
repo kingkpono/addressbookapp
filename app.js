@@ -8,10 +8,10 @@ var session = require('express-session');
 
 app.use(session({secret: 'ssshhhhh'}));
 var connection=mysql.createConnection({
-host:'localhost',
+host:'162.13.77.157',
 user:'root',
-password:'',
-database:'user'
+password:'ohdaix6quohsohmaaf7aiR',
+database:'newdemmo'
 }
 );
 connection.connect(function(error){

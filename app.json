@@ -1,0 +1,8 @@
+{
+  "name": "addressbookapp",
+  "description": "manage addresses",
+
+  "repository": "https://github.com/kingkpono/addressbookapp.git",
+  "logo": "",
+  "keywords": ["addressbookapp"]
+}
