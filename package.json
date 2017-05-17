@@ -4,7 +4,7 @@
   "description": "manage addresses",
   "main": "index.js",
   "scripts": {
-    "start":"node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kpono Akpabio",
@@ -25,6 +25,12 @@
     "react-data-grid": "^2.0.41",
     "react-dom": "^15.5.4",
     "react-dropzone": "^3.13.1",
-    "react-images-uploader": "^1.0.1"
+    "react-formal": "^0.25.0",
+    "react-formal-inputs": "^2.1.1",
+    "react-images-uploader": "^1.0.1",
+    "react-jsonschema-form": "^0.48.2",
+    "react-widgets": "^4.0.0-rc.6",
+    "validator": "^7.0.0",
+    "yup": "^0.21.3"
   }
 }
