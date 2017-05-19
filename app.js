@@ -5,6 +5,10 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var  multer = require('multer');
+var  upload = multer({dest:'./public/uploads'});
+
+
 
 app.use(session({secret: 'ssshhhhh'}));
 var connection=mysql.createConnection({
@@ -58,7 +62,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //process address registration
 var sess;
-app.post('/addaddress',function(req,res){
+app.post('/register',function(req,res){
+console.log(req.file);
 sess=req.session; 
 var name=req.body.name;
 var mobile=req.body.mobile;
@@ -68,6 +73,8 @@ var street=req.body.street;
 var city=req.body.city;
 var state_id=req.body.state_id;
 var country_id=req.body.country_id;
+//upload and save photograph path
+
 
 var address  = {
 name:name,
@@ -81,19 +88,31 @@ country_id:country_id
 };
 //insert record if email and mobile donot exists
 var exists = connection.query('select id from user where email = "'+email+'" OR mobile="'+mobile+'"',  function(err, result) {
-
 if(result.length>0)
 {
-res.render('login',{name:"Login"});
+  console.log("duplicate email or mobile");
+res.render('register',{name:"Register",status:500,
+address_name:name,
+mobile:mobile,
+email:email,
+house_number:house_number,
+street:street,
+city:city,
+state_id:state_id,
+country_id:country_id
+
+});
 
 }else{
-var query = connection.query('INSERT INTO user SET ?', address, function(err, result) {
+var query = connection.query('INSERT INTO user(name,mobile,email,house_number,street,city,state_id,country_id) VALUES("'+name+'","'+mobile+'","'+email+'","'+house_number+'","'+street+'","'+city+'","'+state_id+'","'+country_id+'")', function(err, result) {
 if(!!err)
 {
-res.render('login',{name:"Login"});
+  console.log("DB error: "+query.sql);
+res.render('register',{name:"Login",status:400});
 }else{
 sess.email=email;
-res.redirect('profile');
+res.render('login',{name:"Login",status:200});
+
 }
 });//end insert query
 }//end else if no email or mobile
@@ -110,16 +129,19 @@ app.post('/login',function(req,res){
  sess=req.session;
 var mobile=req.body.mobile;
 var email=req.body.email;
+if(mobile=="" || mobile=="")
+  res.render('login',{name:"Login",status:300});
 
 //insert record if email and mobile donot exists
-var exists = connection.query('select name from user where email = "'+email+'" OR mobile="'+mobile+'"',  function(err, result) {
+var exists = connection.query('select name from user where email = "'+email+'" AND mobile="'+mobile+'"',  function(err, result) {
 
 if(result.length>0)
 {
 sess.email=email;
-res.redirect('/profile');
+
+  res.redirect('/profile');
 }else{
-  res.render('login',{name:"Login"});
+  res.render('login',{name:"Login",status:300});
 }
 });//end insert query
 
@@ -134,7 +156,7 @@ var mobile=req.body.mobile;
 var adminemail=req.body.email;
 
 //insert record if email and mobile donot exists
-var exists = connection.query('select name from user where email = "'+adminemail+'" OR mobile="'+mobile+'" AND role="Admin"',  function(err, result) {
+var exists = connection.query('select name from user where email = "'+adminemail+'" AND mobile="'+mobile+'" AND role="Admin"',  function(err, result) {
 
 if(result.length>0)
 {
@@ -155,7 +177,8 @@ res.redirect('/admindashboard');
 
 //process edit action
 app.post('/editaddress',function(req,res){
-sess=req.session; 
+sess=req.session;
+var session_email=sess.email; 
 var name=req.body.name;
 var mobile=req.body.mobile;
 var email=req.body.email;
@@ -165,8 +188,12 @@ var city=req.body.city;
 var state_id=req.body.state_id;
 var country_id=req.body.country_id;
 
-var address  = {
-name:name,
+
+//insert record if email and mobile donot exists
+
+var query = connection.query('UPDATE  user SET ? WHERE email = "'+session_email+'"', [{
+
+  name:name,
 mobile:mobile,
 email:email,
 house_number:house_number,
@@ -174,14 +201,13 @@ street:street,
 city:city,
 state_id:state_id,
 country_id:country_id
-};
-//insert record if email and mobile donot exists
+}], function(err, result) {
 
-var query = connection.query('UPDATE  user SET ? WHERE email = ?', {address,email}, function(err, result) {
-
-
+ console.log("Why cant update "+query.sql);
 if(!!err)
 {
+
+
 res.render('profile',{name:"Profile",status:300,
 
 address_name:name,
@@ -224,8 +250,7 @@ if(process.argv[2]="dev")
 {
 app.use(express.static(path.join(__dirname)));
 }
-var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
-var server_host = process.env.YOUR_HOST || '0.0.0.0';
-app.listen(server_port, server_host, function() {
-    console.log('Listening on port %d', server_port);
+
+app.listen(4300, function() {
+    console.log('Listening on port 4300');
 });

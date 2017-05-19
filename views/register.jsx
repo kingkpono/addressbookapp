@@ -9,7 +9,12 @@ var RegisterComponent =React.createClass({
         <div>
    <DefaultLayout name={this.props.name}/>
     <div className="container">
-             <form name="addressForm" method="post" action="/addaddress">
+     {this.props.status==500 ? (
+         <div className="alert alert-dismissible alert-danger">Email or Mobile already exists</div>
+      ) : (
+        ''
+      )}
+             <form name="addressForm" method="post" action="/register">
             <div className="form-group">
               <label for="name"> Name</label>
               <input type="text" className="form-control" name="name" />
@@ -77,7 +82,7 @@ var RegisterComponent =React.createClass({
                             <option value="Sokoto">Sokoto</option>
                             <option value="Taraba">Taraba</option>
                             <option value="Yobe">Yobe</option>
-                            <option value="Zamfara">Zamfara</option>}
+                            <option value="Zamfara">Zamfara</option>
 
             </select>
            </div>

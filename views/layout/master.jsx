@@ -16,8 +16,7 @@ var MasterLayout=React.createClass({
  <title>{this.props.name}</title>
 </head>
 <body>
-<script src="https://fb.me/react-15.1.0.js"></script>
-<script src="https://fb.me/react-dom-15.1.0.js"></script>
+
 <nav className="navbar navbar-default">
   <div className="container-fluid">
     <div className="navbar-header">
@@ -34,9 +33,9 @@ var MasterLayout=React.createClass({
      
      
       <ul className="nav navbar-nav navbar-right">
-       <li><a href="/login">User Login</a></li>
-           
+     <li><a href="/login">User Login</a></li>
             <li><a href="/register">Add Address</a></li>
+            <li><a href="/adminlogin">Admin</a></li>
              <li><a href="/logout">Logout</a></li>
       </ul>
     </div>

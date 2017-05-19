@@ -11,6 +11,7 @@ var AdminmasterLayout=React.createClass({
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="http://bootswatch.com/lumen/bootstrap.min.css" />
    <link rel="stylesheet" href="/public/css/style.css" />
+      <link rel="stylesheet" href="/public/css/main.css" />
   <link rel="stylesheet" href="/public/css/react-bootstrap-table-all.min.css" />
    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" />
    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -35,8 +36,9 @@ var AdminmasterLayout=React.createClass({
      
       <ul className="nav navbar-nav navbar-right">
        
-            <li><a href="/adminlogin">Login</a></li>
+            <li><a href="/login">User Login</a></li>
             <li><a href="/register">Add Address</a></li>
+            <li><a href="/adminlogin">Admin</a></li>
              <li><a href="/logout">Logout</a></li>
       </ul>
     </div>

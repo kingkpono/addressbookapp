@@ -13,13 +13,7 @@ password:'ohdaix6quohsohmaaf7aiR',
 database:'newdemmo'
 }
 );
-connection.connect(function(error){
-if(!!error){
-console.log("Error");
-}else{
-console.log("Connected");
-}
-});
+
 
 
 var profilerouter=express.Router();
@@ -38,7 +32,7 @@ res.render('profile',
 
 	{
 
-		name:"Login",
+		name:"Profile",
 		address_name:result[0].name,
 		mobile:result[0].mobile,
 		email:result[0].email,

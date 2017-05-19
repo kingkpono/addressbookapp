@@ -8,14 +8,15 @@ var ProfileComponent =React.createClass({
         return(
         <div>
    <DefaultLayout name={this.props.name}/>
-    <div className="container"> {this.props.status==200 ? (
-        <div className="alert alert-success">Updated succesfully</div>
+    <div className="container"> 
+    {this.props.status==200 ? (
+        <div className="alert alert-dismissible alert-success">Updated succesfully</div>
       ) : (
         ''
       )}
     
            {this.props.status==300 ? (
-         <div className="alert alert-error">Could not update</div>
+         <div className="alert alert-dismissible alert-danger">Could not update</div>
       ) : (
         ''
       )}

@@ -10,6 +10,25 @@ var LoginComponent =React.createClass({
    <DefaultLayout name={this.props.name}/>
     <div className="container">
           <div className="wrapper">
+          {this.props.status==300 ? (
+         <div className="alert alert-dismissible alert-danger">Invalid username or mobile phone</div>
+      ) : (
+        ''
+      )}
+
+      {this.props.status==200 ? (
+        <div className="alert alert-dismissible alert-success">Address succesfully registered.Kindly login</div>
+      ) : (
+        ''
+      )}
+    
+          
+
+      {this.props.status==400 ? (
+         <div className="alert alert-dismissible alert-danger">Could not register address. Retry later</div>
+      ) : (
+        ''
+      )}
     <form className="form-signin" method="post" action="/login">       
       <h2 className="form-signin-heading">Please login</h2>
       <input type="text" className="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
